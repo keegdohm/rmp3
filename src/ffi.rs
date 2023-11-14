@@ -6,12 +6,12 @@ pub const MINIMP3_MAX_SAMPLES_PER_FRAME: u32 = 2304;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct mp3dec_frame_info_t {
-    pub frame_bytes: libc::c_int,
-    pub frame_offset: libc::c_int,
-    pub channels: libc::c_int,
-    pub hz: libc::c_int,
-    pub layer: libc::c_int,
-    pub bitrate_kbps: libc::c_int,
+    pub frame_bytes: core::ffi::c_int,
+    pub frame_offset: core::ffi::c_int,
+    pub channels: core::ffi::c_int,
+    pub hz: core::ffi::c_int,
+    pub layer: core::ffi::c_int,
+    pub bitrate_kbps: core::ffi::c_int,
 }
 #[test]
 fn bindgen_test_layout_mp3dec_frame_info_t() {
@@ -97,10 +97,10 @@ fn bindgen_test_layout_mp3dec_frame_info_t() {
 pub struct mp3dec_t {
     pub mdct_overlap: [[f32; 288usize]; 2usize],
     pub qmf_state: [f32; 960usize],
-    pub reserv: libc::c_int,
-    pub free_format_bytes: libc::c_int,
-    pub header: [libc::c_uchar; 4usize],
-    pub reserv_buf: [libc::c_uchar; 511usize],
+    pub reserv: core::ffi::c_int,
+    pub free_format_bytes: core::ffi::c_int,
+    pub header: [core::ffi::c_uchar; 4usize],
+    pub reserv_buf: [core::ffi::c_uchar; 511usize],
 }
 #[test]
 fn bindgen_test_layout_mp3dec_t() {
@@ -186,8 +186,8 @@ extern "C" {
     pub fn mp3dec_decode_frame(
         dec: *mut mp3dec_t,
         mp3: *const u8,
-        mp3_bytes: libc::c_int,
+        mp3_bytes: core::ffi::c_int,
         pcm: *mut mp3d_sample_t,
         info: *mut mp3dec_frame_info_t,
-    ) -> libc::c_int;
+    ) -> core::ffi::c_int;
 }
